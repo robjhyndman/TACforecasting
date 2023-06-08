@@ -1,0 +1,35 @@
+Package: TACforecasting
+Version: 0.0.1
+Title: Forecasting Functions for the Transport Accident Commission
+Description: Functions to make hierarchical time series forecasts 
+						 of attendant care hours easier.
+Depends:
+  R (>= 4.2.0), tsibble, fabletools
+Imports:
+	abind,
+  distributional,
+	dplyr,
+	forcats,
+  forecast,
+  furrr,
+	ggplot2,
+  hts,
+  janitor,
+  lubridate,
+  MASS,
+  readr,
+  stringr,
+  tibble,
+  tidyr,
+  tsbox
+LazyData: yes
+ByteCompile: TRUE
+Authors@R: c(
+  person("Rob", "Hyndman", email = "Rob.Hyndman@monash.edu", role = c("aut", "cre", "cph"), comment = c(ORCID = "0000-0002-2140-5352"))
+  )
+BugReports: https://github.com/robjhyndman/TAC_forecasting/issues
+License: GPL-3
+URL: https://pkg.robjhyndman.com/TAC_forecasting/, https://github.com/robjhyndman/TAC_forecasting
+Encoding: UTF-8
+RoxygenNote: 7.2.3
+Config/testthat/edition: 3
