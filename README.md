@@ -9,11 +9,18 @@ hours for the Transport Accident Commission.
 ## Installation
 
 ``` r
-# install.packages("remotes")
+# First install the dependencies
+install.packages(c("tsibble","fabletools","abind","distributional","dplyr",
+    "forcats","forecast","furrr","ggplot2","hts","janitor","lubridate",
+  "MASS","readr","stringr","tibble","tidyr","tsbox","remotes"))
+# Then install this package
 remotes::install_github("robjhyndman/TACforecasting")
 ```
 
 ## Example
+
+The data included in the package and in this example has been randomly
+generated. No real data is included in this repository.
 
 ``` r
 library(TACforecasting)
