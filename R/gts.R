@@ -51,7 +51,8 @@ make_claims_gts <- function(claims_tsibble, label_maps) {
   colnames(claims_ts) <- stringr::str_replace_all(colnames(claims_ts), "_", "")
   # Finally convert to gts object using column names to create labels
   claims_ts |>
-    hts::gts(characters = list(3, 6))
+    hts::gts(characters = list(3, 6)) |> 
+  	suppressMessages()
 }
 
 # Make gts object from hours
@@ -80,7 +81,8 @@ make_hours_gts <- function(group_costs, label_maps) {
 
   # Finally convert to gts object using column names to create labels
   hours_ts |>
-    hts::gts(characters = list(3, 6))
+    hts::gts(characters = list(3, 6)) |> 
+  	suppressMessages()
 }
 
 

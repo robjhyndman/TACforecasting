@@ -32,8 +32,9 @@ remotes::install_github("robjhyndman/TACforecasting")
 
 The data included in the package and in this example has been randomly generated. No real data is included in this repository.
 
-```{r}
+```{r, message=FALSE}
 library(TACforecasting)
+library(dplyr)
 library(ggplot2)
 ```
 
@@ -56,14 +57,15 @@ plot_total_hours(group_costs, age_group, include_average = FALSE) +
 # Plot total hours per injury group by billing period
 plot_total_hours(group_costs, injury_group, include_average = FALSE) +
    ggtitle("Hours by injury group in each billing period")
+```
 
-# Number of billing periods to forecast. Needs to be > 1
-h <- 13
-# Number of futures to simulate for each model
-nsim <- 200
 
+```{r}
 # Compute forecasts of total hours by age group and injury group
-fable_forecasts_hours <- get_forecasts(group_costs, h, nsim)
+# Keep back 2022 as test set
+fable_forecasts_hours <- group_costs |> 
+	filter(billing_period <= as.Date("2021-12-31")) |> 
+	get_forecasts(h = 13, nsim = 200)
 ```
 
 ```{r}
@@ -79,3 +81,19 @@ plot_forecasts(fable_forecasts_hours, group_costs, show_injury_group = "NONCAT")
    ggtitle("Forecasts of total hours from NONCAT injuries claims")
 ```
 
+```{r message=FALSE, warning=FALSE}
+# Compute accuracy statistics on the 2022 test set
+tac_accuracy(fable_forecasts_hours, group_costs)
+# Compute accuracy statistics on a rolling origin
+# (This takes a long time to run)
+tscv_accuracy(group_costs, h = 13, nsim = 200, init = 195, step = 6) |> 
+  filter(!is.na(RMSE), h <= 24) |>
+  summarise(
+    RMSE = sqrt(mean(RMSE^2)),
+    MAE = mean(MAE),
+    MAPE = mean(MAPE),
+    Coverage = 100*mean(coverage),
+    CRPS = mean(CRPS),
+    .by = h
+  ) 
+```
