@@ -1,3 +1,5 @@
+#' @import fabletools tsibble
+
 #' @keywords internal
 "_PACKAGE"
 
@@ -7,3 +9,4 @@ utils::globalVariables(c("data","count","Series","age_group","injury_group","hou
 												 "billing_period_start","billing_period_end","adjusted_hours","amount_paid",
 												 "last_bill","age_group2","injury_group2",
 												 "censored","h","panel","id","nclaims","ave_hours"))
+

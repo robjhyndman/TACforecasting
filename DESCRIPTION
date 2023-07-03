@@ -17,6 +17,7 @@ Imports:
   janitor,
   lubridate,
   MASS,
+  purrr,
   readr,
   stringr,
   tibble,

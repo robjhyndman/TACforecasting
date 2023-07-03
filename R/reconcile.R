@@ -9,7 +9,8 @@ make_mapping_matrix <- function(data, models) {
   S <- hts::smatrix(data)
 
   # Find W matrices
-  W2 <- hts:::lowerD(response_res)
+  n <- nrow(response_res)
+  W2 <- diag(apply(response_res, 2, crossprod)/n)
 
   # Find G matrix
   nbottom <- NCOL(data$bts)

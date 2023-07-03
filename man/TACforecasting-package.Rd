@@ -11,8 +11,8 @@ Functions to make hierarchical time series forecasts of attendant care hours eas
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://pkg.robjhyndman.com/TAC_forecasting/}
-  \item \url{https://github.com/robjhyndman/TAC_forecasting}
+  \item \url{https://pkg.robjhyndman.com/TACforecasting/}
+  \item \url{https://github.com/robjhyndman/TACforecasting/}
   \item Report bugs at \url{https://github.com/robjhyndman/TAC_forecasting/issues}
 }
 
